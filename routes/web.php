@@ -20,4 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::get('/quiz/{quiz}', 'QuizController@index');
+Route::get('/quiz/{quiz}', 'QuizController@start');
+Route::get('/quiz/{quiz}/q/{question}', 'QuizController@showQuest');
