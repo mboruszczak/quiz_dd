@@ -30,12 +30,12 @@ class Quiz extends Model
     
     public function getAnswers($quiz_id, $quest_id) {
         
-        $answer = DB::table('answers')
+        $answers = DB::table('answers')
                 ->where('question_id',$quest_id)
                 ->where('quiz_id', $quiz_id)
                 ->get();
                 
-        return $answer;
+        return $answers;
     }
     
 }

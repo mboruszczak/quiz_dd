@@ -6,7 +6,8 @@
     
     <p>{{ $quest->question }}</p>
     
-    <form>
+    <form method="post" action="/quiz/public/quiz/{{ $quiz_id  }}/q/{{ $next_quest  }}">
+    {{ csrf_field() }}
     
     @foreach($answers as $answer) 
     <div>
@@ -18,16 +19,18 @@
         @else
             
         <input type='checkbox' value='{{ $answer->id }}' id='{{ $answer->id }}' name='answer'>
-        <label for='{{ $answer->id }}'> {{ $answer->answer }}</label>
+        <label for='{{ $answer->id }}'> {{ $answer->answer }} </label>
         
         @endif
     </div>
     @endforeach
     
-    <input type='submit' value='Dalej' name='next'>
+    <input type='submit' value='Dalej' name='next' disabled="disabled" id="submit-btn">
     </form>
     
 </div>
+
+
 
 
 @endsection
