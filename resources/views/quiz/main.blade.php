@@ -13,12 +13,12 @@
     <div>
         @if($quest->type === 1)
         
-        <input type='radio' value='{{ $answer->id }}' id='{{ $answer->id }}' name='answer'>
+        <input type='radio' value='{{ $answer->id }}' id='{{ $answer->id }}' name='answer[]'>
         <label for='{{ $answer->id }}'> {{ $answer->answer }}</label>
         
         @else
             
-        <input type='checkbox' value='{{ $answer->id }}' id='{{ $answer->id }}' name='answer'>
+        <input type='checkbox' value='{{ $answer->id }}' id='{{ $answer->id }}' name='answer[]'>
         <label for='{{ $answer->id }}'> {{ $answer->answer }} </label>
         
         @endif

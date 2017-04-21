@@ -50,24 +50,35 @@ class Quiz extends Model
         return $last_quest_id->id;
     }
     
-    public function saveAnswers($quiz_id, $quest_id, $user_id) {
+    public function saveAnswers($quiz_id, $quest_id, $answer, $user_id) {
         
-        $answer = DB::table('users_answers')
+        $find_answer = DB::table('users_score')
                 ->where('quiz_id', $quiz_id)
-                ->where('qest_id', $quest_id)
-                ->where('user_id', $$user_id)
+                ->where('question_id', $quest_id)
+                ->where('user_id', $user_id)
                 ->first();
         
-        if($answer->count()) {
+        if($find_answer) {
             // update existsing answer
+            DB::table('users_score')
+                ->where('quiz_id', $quiz_id)
+                ->where('question_id', $quest_id)
+                ->where('user_id', $user_id)
+                ->update(['answer' => $answer]);        
         }
         else {
             // add new answer
+            DB::table('users_score')->insert([
+                'quiz_id' => $quiz_id,
+                'question_id' => $quest_id,
+                'answer' => $answer,
+                'user_id' => $user_id,
+            ]);
         }
         
     }
     
     public function getScore($quiz_id, $user_id) {
-        
+        // Summary of the quiz
     }
 }
