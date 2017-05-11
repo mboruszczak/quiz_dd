@@ -58,15 +58,7 @@ class Quiz extends Model
                 ->where('user_id', $user_id)
                 ->first();
         
-        if($find_answer) {
-            // update existsing answer
-            DB::table('users_score')
-                ->where('quiz_id', $quiz_id)
-                ->where('question_id', $quest_id)
-                ->where('user_id', $user_id)
-                ->update(['answer' => $answer]);        
-        }
-        else {
+        if(!$find_answer) {
             // add new answer
             DB::table('users_score')->insert([
                 'quiz_id' => $quiz_id,
@@ -75,10 +67,42 @@ class Quiz extends Model
                 'user_id' => $user_id,
             ]);
         }
+        else {
+             // update existsing answer
+            DB::table('users_score')
+                ->where('quiz_id', $quiz_id)
+                ->where('question_id', $quest_id)
+                ->where('user_id', $user_id)
+                ->update(['answer' => $answer]);    
+        }
         
     }
     
     public function getScore($quiz_id, $user_id) {
         // Summary of the quiz
+        $user_answers = DB::table('users_score')
+                ->select('question_id', 'answer')
+                ->where('user_id', $user_id)
+                ->where('quiz_id', $quiz_id)
+                ->get();
+        
+
+        foreach($user_answers as $user_answer) {
+            $temp = unserialize($user_answer->answer);
+            $answers_array = [
+                $user_answer->question_id => $temp,
+            ];
+        }
+        
+        var_dump($answers_array);
+        
+        
+        $treshold = DB::table('quizs')
+                ->select('treshold')
+                ->where('id', $quiz_id)
+                ->first();
+        var_dump("------------<br>".$treshold);
+        
+        exit();
     }
 }
