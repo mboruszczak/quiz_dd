@@ -1,0 +1,34 @@
+body {
+    background-color: #EFEFEF;
+}
+
+.quiz-card {
+    width: 100%;
+    
+    .mdl-card__title {justify-content: space-between}
+    .success-badge {color: limegreen;}
+    .failure-badge {color: firebrick;}
+}
+
+.wide-btn{
+    font-weight: bold;
+    padding: 0em 5em;
+    width: 100%;
+
+    &:hover{
+        text-decoration:none;
+    }
+}
+
+.flex-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.white-bg{background-color: #fff;}
+
+@media (min-width: 768px) {
+    .wide-btn {
+        width: auto;
+    }
+}

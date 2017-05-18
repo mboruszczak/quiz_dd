@@ -11,14 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 
 
 Auth::routes();
-
+Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/quiz/{quiz}', 'QuizController@start');
 Route::get('/quiz/{quiz}/q/{question}', 'QuizController@showQuest');

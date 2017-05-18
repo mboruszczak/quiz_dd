@@ -182,14 +182,44 @@ class Quiz extends Model
         $score = ($user_points / $points['max_points'])*100;
         if($score < $points['treshold'])
         {
-            $pass = false;
+            $status = 0;
         }
         else
         {
-            $pass = true;
+            $status = 1;
         }
         
-        return ['score' => $score, 'pass' => $pass];
+        $this->setQuziStatus($quiz_id, $user_id, $status, $score);
+        
+        return ['score' => $score, 'status' => $status];
+    }
+    
+    public function setQuziStatus($quiz_id, $user_id, $status, $score)
+    {
+        $find_status = DB::table('user_quizs')
+                ->where('quiz_id', $quiz_id)
+                ->where('user_id', $user_id)
+                ->first();
+        
+        if(!$find_status)
+        {
+            DB::table('user_quizs')->insert([
+                'quiz_id' => $quiz_id,
+                'user_id' => $user_id,
+                'status'  => $status,
+                'score'   => $score
+            ]);
+        }
+        else
+        {
+            DB::table('user_quizs')
+                    ->where('quiz_id', $quiz_id)
+                    ->where('user_id', $user_id)
+                    ->update([
+                        'status'=> $status,
+                        'score' => $score
+                    ]);
+        }
     }
     
 }

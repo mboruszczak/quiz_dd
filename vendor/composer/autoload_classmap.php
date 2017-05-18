@@ -35,6 +35,7 @@ return array(
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateQuestionsTable' => $baseDir . '/database/migrations/2017_04_10_092623_create_questions_table.php',
     'CreateQuizsTable' => $baseDir . '/database/migrations/2017_04_10_092307_create_quizs_table.php',
+    'CreateUserQuizsTable' => $baseDir . '/database/migrations/2017_05_16_142016_create_user_quizs_table.php',
     'CreateUsersScore' => $baseDir . '/database/migrations/2017_04_19_123854_create_users_score.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'Cron\\AbstractField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/AbstractField.php',

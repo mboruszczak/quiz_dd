@@ -58,7 +58,7 @@ class QuizController extends Controller
             //$next_quest = "finish/end";
             
             $score = $model->getScore($quiz_id, Auth::id());
-           
+            
             return view('quiz.summary', compact('score'));
             
         }

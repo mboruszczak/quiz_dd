@@ -301,6 +301,7 @@ class ComposerStaticInit4a343de6758bdf39b3c7ea3315cca772
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateQuestionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_10_092623_create_questions_table.php',
         'CreateQuizsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_10_092307_create_quizs_table.php',
+        'CreateUserQuizsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_16_142016_create_user_quizs_table.php',
         'CreateUsersScore' => __DIR__ . '/../..' . '/database/migrations/2017_04_19_123854_create_users_score.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',

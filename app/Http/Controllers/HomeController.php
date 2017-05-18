@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Player;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,7 @@ class HomeController extends Controller
     {
         // This will be player panel
         $quizs = new Player();
-        $quiz_list = $quizs->getQuizs();
+        $quiz_list = $quizs->getQuizs(Auth::id());
         
         return view('home', compact('quiz_list'));
     }
