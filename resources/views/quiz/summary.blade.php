@@ -2,22 +2,28 @@
 
 @section('content')
 
-<section class="container">
-    <div class="row">
-        <div class="col-md-10 offset-md-1">
+<section class="container pt-4">
+    <div class="jumbotron white-bg mdl-shadow--8dp">
+        <div class="mdl-card__title-text">
             @if($score['status'] == 1)
 
                 <h1>Gratulacje!</h1>
-
+                <i class='fa fa-thumbs-up fa-2x success-badge' aria-hidden='true'></i>
             @else
 
-                <h1>Porażka!</h1>
-
+                <h1>Porażka! <i class="fa fa-thumbs-down failure-badge" aria-hidden="true"></i></h1>
+                
             @endif
-            <h2>Twój wynik: {{ $score['score'] }}%</h2>
-            <a href="{{ url('/home') }}" class="btn btn-lg btn-primary">OK</a>
+        </div>
+        <hr class="my-4">
+        <div class="mdl-card__supporting-text">
+            <h3>Twój wynik: {{ $score['score'] }}%</h3>
+        </div>
+        <div class="mdl-card__actions">
+            <a href="{{ url('/home') }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent wide-btn">OK</a>
         </div>
     </div>
+   
 </section>
 
 @endsection

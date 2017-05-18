@@ -6,9 +6,10 @@ body {
     width: 100%;
     
     .mdl-card__title {justify-content: space-between}
-    .success-badge {color: limegreen;}
-    .failure-badge {color: firebrick;}
 }
+
+.success-badge {color: limegreen;}
+.failure-badge {color: firebrick;}
 
 .wide-btn{
     font-weight: bold;

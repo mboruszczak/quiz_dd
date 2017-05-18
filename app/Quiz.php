@@ -150,6 +150,7 @@ class Quiz extends Model
         $user_points = 0;
         foreach($this->matrix_answers_array as $maa_key=>$maa_value) //@mma_key = question_id, @mma_value = array of answers
         {
+            
             foreach($this->user_answers_array[$maa_key] as $user_answer)
             {
                 if(in_array($user_answer, $maa_value))
@@ -174,12 +175,13 @@ class Quiz extends Model
     // Summary of the quiz
     public function getScore($quiz_id, $user_id) 
     {
+        $status = '';
         $this->getUserAnswers($user_id, $quiz_id);
         $points = $this->getQuizPoints($quiz_id);
         $this->getQuizKey($quiz_id);
         $user_points = $this->checkAnswers();
         
-        $score = ($user_points / $points['max_points'])*100;
+        $score = round(($user_points / $points['max_points'])*100, 0);
         if($score < $points['treshold'])
         {
             $status = 0;

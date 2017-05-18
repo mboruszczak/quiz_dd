@@ -32,7 +32,7 @@
         </div>
         @endforeach
         <div class="mdl-card__actions flex-end">
-            <button type='submit' name='next' disabled="disabled" id="submit-btn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent wide-btn">Dalej</button>
+            <button type='submit' name='next' value='next' disabled="disabled" id="submit-btn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent wide-btn">Dalej</button>
         </div>
         </form>
     </div>
