@@ -8,7 +8,7 @@
             <h3 class="mdl-card__title-text">{{ $quest->question }}</h3>
         </div>
         <hr class="my-4">
-        <form method="post" action="{{ url('/quiz') }}/{{ $quiz_id  }}/q/{{ $next_quest  }}">
+        <form method="post" action="{{ url('/quiz_main') }}">
         {{ csrf_field() }}
 
         @foreach($answers as $answer) 
@@ -31,7 +31,12 @@
             @endif
         </div>
         @endforeach
-        <div class="mdl-card__actions flex-end">
+        <input type="hidden" name="tq" value="{{ $quiz_id  }}">
+        <input type="hidden" name="cq" value="{{ $next_quest  }}">
+        <div class="mdl-card__actions flex-button-container">
+            @if($next_quest > 2)
+            <button type='submit' name='prev' value='prev' class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Cofnij</button>
+            @endif
             <button type='submit' name='next' value='next' disabled="disabled" id="submit-btn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent wide-btn">Dalej</button>
         </div>
         </form>

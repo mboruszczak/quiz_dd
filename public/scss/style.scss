@@ -21,15 +21,30 @@ body {
     }
 }
 
-.flex-end {
+.flex-button-container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    flex-direction: column-reverse;
+    
+    button {
+        margin-top: 3rem;
+    }
+    
+    button[name=prev] {
+        background-color: #efefef!important;
+        color: #999!important;
+    }
 }
 
 .white-bg{background-color: #fff;}
 
+
+
 @media (min-width: 768px) {
     .wide-btn {
         width: auto;
+    }
+    .flex-button-container {
+        flex-direction: row;
     }
 }

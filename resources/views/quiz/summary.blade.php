@@ -7,8 +7,8 @@
         <div class="mdl-card__title-text">
             @if($score['status'] == 1)
 
-                <h1>Gratulacje!</h1>
-                <i class='fa fa-thumbs-up fa-2x success-badge' aria-hidden='true'></i>
+                <h1>Gratulacje! <i class='fa fa-thumbs-up fa-2x success-badge' aria-hidden='true'></i></h1>
+                
             @else
 
                 <h1>Porażka! <i class="fa fa-thumbs-down failure-badge" aria-hidden="true"></i></h1>

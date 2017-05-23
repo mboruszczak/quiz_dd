@@ -80,7 +80,6 @@ class Quiz extends Model
                 ->where('user_id', $user_id)
                 ->update(['answer' => $answer]);    
         }
-        
     }
     
     public function getUserAnswers($user_id, $quiz_id) 
@@ -148,8 +147,10 @@ class Quiz extends Model
     public function checkAnswers() 
     {
         $user_points = 0;
+         print_r($this->matrix_answers_array);
         foreach($this->matrix_answers_array as $maa_key=>$maa_value) //@mma_key = question_id, @mma_value = array of answers
         {
+           
             
             foreach($this->user_answers_array[$maa_key] as $user_answer)
             {
