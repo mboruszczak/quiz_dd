@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="panel panel-default mdl-card--border mdl-shadow--8dp">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
@@ -41,8 +41,9 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                                        <input type="checkbox" name="remember" class="mdl-checkbox__input" {{ old('remember') ? 'checked' : '' }} >
+                                        <span class="mdl-checkbox__label">Remember Me</span>
                                     </label>
                                 </div>
                             </div>
@@ -50,7 +51,7 @@
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                                     Login
                                 </button>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Admin;
 use App\Player;
 use Auth;
 
@@ -13,9 +14,18 @@ class HomeController extends Controller
      *
      * @return void
      */
+    
+    
     public function __construct()
     {
         $this->middleware('auth');
+    }
+    
+    public function sentinel()
+    {
+        $model = new Admin();
+        $model->isAdmin(Auth::id());
+        return  $model->admin;
     }
 
     /**
@@ -25,10 +35,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // This will be player panel
         $quizs = new Player();
         $quiz_list = $quizs->getQuizs(Auth::id());
         
-        return view('home', compact('quiz_list'));
+        return view('home', compact('quiz_list', 'admin'));
     }
 }

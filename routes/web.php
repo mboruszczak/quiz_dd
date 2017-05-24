@@ -21,5 +21,6 @@ Route::get('/home', 'HomeController@index');
 Route::get('/quiz/{quiz}', 'QuizController@start');
 Route::post('/quiz_main', 'QuizController@showQuest');
 Route::get('/quiz_main', 'QuizController@showQuest');
+Route::get('/admin/dashboard', 'AdminController@index');
 /*Route::post('/quiz/{quiz}/q/{question}', 'QuizController@showQuest');
 Route::post('/quiz/{quiz}/q/finish/end', 'QuizController@endQuiz');*/

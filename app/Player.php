@@ -7,15 +7,37 @@ use Illuminate\Support\Facades\DB;
 
 class Player extends Model
 {
-    public function getQuizs($user_id) {
-
+    public function getQuizs($user_id) 
+    {
+        $quizs_and_status = [];
+        
         $quizs = DB::table('quizs')
-                ->leftJoin('user_quizs', 'quizs.id', '=', 'user_quizs.quiz_id')
-                ->select('quizs.id as id', 'quizs.title as title', 'quizs.teaser as teaser', 'user_quizs.status as status')
-                ->whereNull('user_quizs.status')
-                ->orWhere('user_quizs.user_id', $user_id)
+                ->select('id', 'title' , 'teaser')
                 ->get();
         
-        return $quizs;
+        $info = DB::table('user_quizs')
+                ->select('quiz_id', 'status')
+                ->where('user_id', $user_id)
+                ->get();
+
+        foreach($quizs as $quiz)
+        {
+            $quizs_and_status[$quiz->id] = [
+                    'id' => $quiz->id,
+                    'title' => $quiz->title,
+                    'teaser' => $quiz->teaser,
+                    'status' => '',
+            ];
+            
+            foreach($info as $status)
+            {
+                if($status->quiz_id == $quiz->id)
+                {
+                    $quizs_and_status[$quiz->id]['status'] = $status->status;
+                }
+            }
+        }
+        
+        return $quizs_and_status;
     }
 }

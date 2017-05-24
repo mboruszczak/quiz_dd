@@ -125,7 +125,7 @@ class Quiz extends Model
                 ->where('correct', 1)
                 ->orderBy('question_id', 'asc')
                 ->get();
-        
+       
         foreach($answers_matrix as $correct_answer) 
         {
             $current_quest_id = $correct_answer->question_id;
@@ -138,19 +138,19 @@ class Quiz extends Model
                     $i++;
                 }
             }
-            
-            $this->matrix_answers_array[$correct_answer->question_id] = $temp;
+
+            $this->matrix_answers_array[$current_quest_id] = $temp;
             $i=0;
+            unset($temp);
         }
     }
     
     public function checkAnswers() 
     {
         $user_points = 0;
-         print_r($this->matrix_answers_array);
+
         foreach($this->matrix_answers_array as $maa_key=>$maa_value) //@mma_key = question_id, @mma_value = array of answers
         {
-           
             
             foreach($this->user_answers_array[$maa_key] as $user_answer)
             {
@@ -216,12 +216,12 @@ class Quiz extends Model
         else
         {
             DB::table('user_quizs')
-                    ->where('quiz_id', $quiz_id)
-                    ->where('user_id', $user_id)
-                    ->update([
-                        'status'=> $status,
-                        'score' => $score
-                    ]);
+                ->where('quiz_id', $quiz_id)
+                ->where('user_id', $user_id)
+                ->update([
+                    'status'=> $status,
+                    'score' => $score
+                ]);
         }
     }
     

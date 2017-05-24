@@ -5,22 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Quiz;
 use Auth;
-use Symfony\Component\HttpFoundation\Cookie;
 
 class QuizController extends Controller
 {
 
     
-    public function __construct() {
-        
+    public function __construct() 
+    {
         $this->middleware('auth');
-
     }
     
     /*
      * Display basic info about quiz
      */
-    
     public function start($quiz_id) 
     {
         $model = new Quiz();
