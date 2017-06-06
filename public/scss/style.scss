@@ -3,6 +3,8 @@ body
     background-color: #EFEFEF;
 }
 
+a.mdl-button:hover {text-decoration: none;}
+
 .navbar-nav
 {
     -webkit-flex-direction: row;
@@ -50,8 +52,6 @@ body
 }
 
 .white-bg{background-color: #fff;}
-
-
 
 @media (min-width: 768px) 
 {
