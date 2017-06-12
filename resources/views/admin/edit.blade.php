@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="container">
-    @if($status > 0)
+    @if($status == 1)
         <div class="alert alert-success" role="alert">
             <strong>Zapisano zmiany!</strong>
         </div>
@@ -26,16 +26,21 @@
         </form>
     </div>
     
+    @if($status == 2)
+        <div class="alert alert-success" role="alert">
+            <strong>Dodano pytanie!</strong>
+        </div>
+    @endif
     <div class="row">
         <form method="post" action="edit">
             {{ csrf_field() }}
             <div class="form-group">
                 <label>Jednokrotnego wybory
-                    <input type="radio" class="form-control" name="quest-type" value="1" required>
+                    <input type="radio" class="form-control" name="quest_type" value="1" required data-type="single">
                 </label>
                 <br>
                 <label>Wielokrotnego wybory
-                    <input type="radio" class="form-control" name="quest-type" value="2">
+                    <input type="radio" class="form-control" name="quest_type" value="2" data-type="multi">
                 </label>
             </div>
             <div class="form-group">
@@ -45,18 +50,18 @@
             
             <label>Odpowiedzi</label>
             <div class="form-group">
-                <input type="text" name="answer1" required> <input type="checkbox" name="correct1" value="1">
+                <input type="text" name="answers[]" required> <input type="checkbox" name="correct[]" value="0">
             </div>
             <div class="form-group">
-                <input type="text" name="answer2" required> <input type="checkbox" name="correct2" value="1">
+                <input type="text" name="answers[]" required> <input type="checkbox" name="correct[]" value="1">
             </div>
             <div class="form-group">
-                <input type="text" name="answer3" required> <input type="checkbox" name="correct3" value="1">
+                <input type="text" name="answers[]"> <input type="checkbox" name="correct[]" value="2">
             </div>
             <div class="form-group">
-                <input type="text" name="answer4" required> <input type="checkbox" name="correct4" value="1">
+                <input type="text" name="answers[]"> <input type="checkbox" name="correct[]" value="3">
             </div>
-            <button class="btn btn-lg btn-warning" type="submit" name="add-quest" value="add-quest">Dodaj pytanie <i class="fa fa-plus-circle"></i></button>
+            <button class="btn btn-lg btn-warning" type="submit" name="add_quest" value="add_quest">Dodaj pytanie <i class="fa fa-plus-circle"></i></button>
         </form>
     </div>
     

@@ -34,7 +34,7 @@ class AdminController extends Controller
         
         if($admin->isAdmin(Auth::id())) {
             
-            $action = "";
+            $action = '';
             
             if($request->add) {
                $action = $admin->addQuiz($request->title, $request->teaser, $request->treshold);
@@ -42,7 +42,7 @@ class AdminController extends Controller
             
             return view('admin.add', compact('action'));
         }
-        else{
+        else {
             return redirect()->action('HomeController@index');
         }
     }
@@ -53,16 +53,41 @@ class AdminController extends Controller
         
         if($admin->isAdmin(Auth::id())) {
             
-            $status = "";
+            $status = '';
             
             if($request->edit) {
                 $status = $admin->editQuiz($id, $request->title, $request->teaser, $request->treshold);
+            }
+            
+            if($request->add_quest) {
+                $status = $admin->addQuestion($request, $id);
             }
             
             $quiz = $admin->getSingleQuiz($id);
             $questions = $admin->getQuestionsList($id);
             
             return view('admin.edit', compact('quiz', 'status', 'questions'));
+        }
+        else {
+            return redirect()->action('HomeController@index');
+        }
+    }
+    
+    public function editQuest($quiz_id, $quest_id, Request $request)
+    {
+        $admin = new Admin();
+        $status = '';
+        
+        if($admin->isAdmin(Auth::id())) {
+
+            if($request->edit_quest) {
+                
+                $status = $admin->editQuest($quiz_id, $quest_id, $request);
+            }
+            
+            $quest = $admin->getSingleQuest($quest_id);
+            
+            return view('admin.editquest', compact('quest', 'status'));
         }
         else {
             return redirect()->action('HomeController@index');
